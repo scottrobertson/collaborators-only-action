@@ -7,13 +7,11 @@ const octokit = github.getOctokit(token)
 async function run() {
   const owner = github.context.payload.repository.owner.login
   const repo = github.context.payload.repository.name
-  const pull_id = github.context.payload.pull_request.id
   const pull_number = github.context.payload.pull_request.number
   const username = github.context.payload.pull_request.user.login
 
   console.log('owner', owner)
   console.log('repo', repo)
-  console.log('pull_id', pull_id)
   console.log('pull_number', pull_number)
   console.log('username', username)
 
@@ -43,7 +41,7 @@ async function run() {
     await octokit.issues.createComment({
       owner,
       repo,
-      pull_id,
+      issue_number: pull_number,
       body: 'Pull Request rejected, we only accept pull requests from approved collaborators',
     }).catch((error) => {
       console.log(`Creating comment failed: ${error.message}`)
