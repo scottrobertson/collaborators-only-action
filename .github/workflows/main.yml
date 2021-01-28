@@ -1,0 +1,9 @@
+on: pull_request
+
+jobs:
+  collaborators-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
