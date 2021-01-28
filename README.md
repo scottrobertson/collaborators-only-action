@@ -4,6 +4,8 @@ Automatically close PR's from people outside of the repo collaborators.
 
 ## Usage
 
+Create `.github/workflows/collaborators-only.yml`
+
 ```yaml
 on:
   pull_request:
