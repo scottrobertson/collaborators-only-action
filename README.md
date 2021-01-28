@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: scottrobertson/collaborators-only-action@master
+      - uses: scottrobertson/collaborators-only-action@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           close-message: Sorry, we don't accept PR's from outside collaborators.
