@@ -1,5 +1,8 @@
 name: "Collaborators Only"
 description: "Restrict Pull Requests to Collaborators only."
+branding:
+  icon: stop-circle
+  color: red
 runs:
   using: "node12"
   main: "index.js"
