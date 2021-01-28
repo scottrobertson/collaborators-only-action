@@ -10,3 +10,4 @@ jobs:
       - uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          close-message: Sorry, we don't accept PR's from outside collaborators.

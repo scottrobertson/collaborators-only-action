@@ -10,11 +10,6 @@ async function run() {
   const pull_number = github.context.payload.pull_request.number
   const username = github.context.payload.pull_request.user.login
 
-  console.log('owner', owner)
-  console.log('repo', repo)
-  console.log('pull_number', pull_number)
-  console.log('username', username)
-
   const isCollaborator = await octokit.repos.checkCollaborator({
     owner,
     repo,
@@ -42,7 +37,7 @@ async function run() {
       owner,
       repo,
       issue_number: pull_number,
-      body: 'Pull Request rejected, we only accept pull requests from approved collaborators',
+      body: core.getInput('close-message'),
     }).catch((error) => {
       console.log(`Creating comment failed: ${error.message}`)
       core.setFailed(error.message)
