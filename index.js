@@ -10,6 +10,11 @@ async function run() {
   const pull_number = github.context.payload.pull_request.id
   const username = github.context.payload.pull_request.user.login
 
+  console.log('owner', owner)
+  console.log('repo', repo)
+  console.log('pull_number', pull_number)
+  console.log('username', username)
+
   const isCollaborator = await octokit.repos.checkCollaborator({
     owner,
     repo,
