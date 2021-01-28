@@ -48,6 +48,12 @@ async function run() {
       core.setFailed(error.message)
       exit(1)
     });
+
+    await octokit.issues.lock({
+      owner,
+      repo,
+      issue_number: pull_number,
+    });
   }
 }
 
