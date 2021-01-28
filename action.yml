@@ -3,3 +3,8 @@ description: "Restrict Pull Requests to Collaborators only."
 runs:
   using: "node12"
   main: "index.js"
+
+inputs:
+  token:
+    description: "Github Access Token"
+    required: true
