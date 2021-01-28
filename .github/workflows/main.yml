@@ -1,9 +1,13 @@
-on: pull_request
+on:
+  pull_request:
+    types: [opened, reopened]
 
 jobs:
   collaborators-only:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          close-message: Sorry, we don't accept PR's from outside collaborators.

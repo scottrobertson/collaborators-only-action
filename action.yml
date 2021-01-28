@@ -3,3 +3,12 @@ description: "Restrict Pull Requests to Collaborators only."
 runs:
   using: "node12"
   main: "index.js"
+
+inputs:
+  token:
+    description: "Github Access Token"
+    required: true
+  close-message:
+    description: "The message to post when closing the Pull Request."
+    required: true
+    default: Pull Request rejected, we only accept pull requests from approved collaborators.
