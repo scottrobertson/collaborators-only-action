@@ -14,6 +14,10 @@ async function run() {
     owner,
     repo,
     username,
+  }).catch((error) => {
+    console.log(`Checking collaborator failed: ${error.message}`)
+    core.setFailed(error.message)
+    exit(1)
   });
 
   // If they are not a collaborator, close the PR.
@@ -23,13 +27,21 @@ async function run() {
       repo,
       pull_number,
       state: 'closed'
-    });
+    }).catch((error) => {
+      console.log(`Closing PR failed: ${error.message}`)
+      core.setFailed(error.message)
+      exit(1)
+    })
 
     await octokit.issues.createComment({
       owner,
       repo,
       pull_number,
       body: 'Pull Request rejected, we only accept pull requests from approved collaborators',
+    }).catch((error) => {
+      console.log(`Creating comment failed: ${error.message}`)
+      core.setFailed(error.message)
+      exit(1)
     });
   }
 }
