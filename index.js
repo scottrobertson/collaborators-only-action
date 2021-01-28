@@ -17,7 +17,7 @@ async function run() {
   });
 
   // If they are not a collaborator, close the PR.
-  if (!isCollaborator) {
+  if (isCollaborator) {
     await octokit.pulls.update({
       owner,
       repo,
